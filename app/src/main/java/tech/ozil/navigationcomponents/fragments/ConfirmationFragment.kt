@@ -5,11 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import tech.ozil.navigationcomponents.R
+import tech.ozil.navigationcomponents.models.Money
 
 
 class ConfirmationFragment : Fragment() {
+    lateinit var recipient: String
+    lateinit var money: Money
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        recipient=requireArguments().getString("recipient")!!
+        money= requireArguments().getParcelable<Money>("amount")!!
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val amount = money!!.amount
+        val confirmationMessage="You have sent $amount to $recipient"
+        view.findViewById<TextView>(R.id.confirmation_message).text=confirmationMessage
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
