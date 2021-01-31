@@ -9,7 +9,6 @@ import android.widget.TextView
 import tech.ozil.navigationcomponents.R
 import tech.ozil.navigationcomponents.models.Money
 
-
 class ConfirmationFragment : Fragment() {
     lateinit var recipient: String
     lateinit var money: Money
